@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "CurveLab",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
@@ -28,24 +29,12 @@
   ],
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/CurveLab/index.html"
+      "source": "/CurveLab",
+      "destination": "/"
     },
     {
-      "source": "/construction",
-      "destination": "/CurveLab/construction.html"
-    },
-    {
-      "source": "/studio",
-      "destination": "/CurveLab/studio.html"
-    },
-    {
-      "source": "/CurveLab/:match*",
-      "destination": "/CurveLab/:match*"
-    },
-    {
-      "source": "/:match*",
-      "destination": "/CurveLab/:match*"
+      "source": "/CurveLab/:path*",
+      "destination": "/:path*"
     }
   ]
 }

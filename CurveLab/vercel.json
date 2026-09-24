@@ -25,15 +25,5 @@
         }
       ]
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/construction",
-      "destination": "/construction.html"
-    },
-    {
-      "source": "/studio",
-      "destination": "/studio.html"
-    }
   ]
 }
