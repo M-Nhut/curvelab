@@ -59,13 +59,19 @@ Dự án đã được cấu hình sẵn 2 tệp [`vercel.json`](file:///Users/m
 4. Cấu hình Project trên Vercel:
    - **Framework Preset**: Chọn `Other`.
    - **Root Directory**:
-     - Bạn có thể để mặc định `./` (tệp `vercel.json` ở gốc sẽ tự động chuyển hướng các trang).
-     - *Hoặc* bấm **Edit** và chọn thư mục `CurveLab`.
+     - **Khuyên dùng tốt nhất**: Bấm **Edit** cạnh Root Directory và chọn thư mục **`CurveLab`** (để Vercel xuất bản thẳng các trang từ thư mục này, không bị lỗi 404).
+     - Nếu để mặc định `./`, dự án đã có tệp `index.html` và `vercel.json` ở gốc tự động chuyển hướng vào `CurveLab`.
    - **Environment Variables**: Thêm 2 biến môi trường đã lấy từ Supabase ở Bước 2.4:
      - `NEXT_PUBLIC_SUPABASE_URL` = `[Project URL của bạn]`
      - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `[anon key của bạn]`
 5. Bấm nút **Deploy**.
 6. Sau vài giây, trang web của bạn sẽ hoạt động tại địa chỉ tên miền do Vercel cấp (ví dụ: `https://curvelab-xxx.vercel.app`).
+
+> [!TIP]
+> **Nếu bạn đã deploy rồi mà gặp lỗi 404 trên Vercel**:
+> 1. Vào **Vercel Dashboard** -> Chọn project của bạn -> Vào mục **Settings** -> **General**.
+> 2. Tìm mục **Root Directory** -> Bấm nút **Edit** -> Gõ hoặc chọn **`CurveLab`** -> Bấm **Save**.
+> 3. Chuyển sang tab **Deployments** -> Bấm vào dấu `...` ở bản deploy mới nhất -> Chọn **Redeploy**. Website sẽ hoạt động ngay lập tức!
 
 ### Cách 3.2: Triển khai nhanh qua Vercel CLI
 Nếu bạn đã cài Vercel CLI trên máy tính:
