@@ -1,0 +1,78 @@
+% !TeX program = xelatex
+% CurveLab - standalone vector export. Compile with XeLaTeX, not pdfLaTeX.
+% Structure: tailieuvehinh.pdf, I.1 (p.4); coordinates, draw, node, scope, clip.
+% 3D is the current parallel projection, with visible/hidden line parts (I.3.5, pp.30-32).
+% Captures the current viewport and sampled paths, without embedding a PNG.
+% Width 16 cm; line widths and label sizes preserve the current drawing proportions.
+% Mode: Hinh hoc phang
+\documentclass[varwidth=50cm,border=2pt]{standalone}
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Arial}{\setsansfont{Arial}}{\setsansfont{TeX Gyre Heros}}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz,graphicx}
+\usetikzlibrary{calc,angles,arrows.meta}
+\definecolor{cl0}{RGB}{193,90,16}
+\definecolor{cl1}{RGB}{120,59,176}
+\definecolor{cl2}{RGB}{176,53,135}
+\definecolor{cl3}{RGB}{8,126,98}
+\definecolor{cl4}{RGB}{20,99,214}
+% Change only this width; geometry, strokes and labels scale together.
+\newcommand{\FigureWidth}{16cm}
+\begin{document}
+\begin{center}
+\resizebox{\FigureWidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=-1cm,
+ declare function={figwidth=16; figheight=9.333333;},
+  s1/.style={draw=cl0,draw opacity=1,line width=0.853583pt,line cap=butt,line join=miter},
+  s2/.style={draw=cl1,draw opacity=1,line width=0.853583pt,line cap=butt,line join=miter},
+  s3/.style={draw=cl2,draw opacity=1,line width=0.853583pt,line cap=butt,line join=miter},
+  s4/.style={draw=cl3,draw opacity=1,line width=0.474213pt,line cap=butt,line join=miter},
+  s5/.style={draw=cl3,draw opacity=1,line width=0.853583pt,line cap=butt,line join=miter},
+  s6/.style={anchor=base west,inner sep=0pt,outer sep=0pt,text=cl3,text opacity=1,font={\sffamily\fontsize{6.164764}{7.397717}\selectfont}},
+  s7/.style={fill=cl4,fill opacity=1},
+  s8/.style={draw=cl4,draw opacity=1,line width=0.616476pt,line cap=butt,line join=miter},
+  s9/.style={anchor=base west,inner sep=0pt,outer sep=0pt,text=cl4,text opacity=1,font={\rmfamily\bfseries\fontsize{7.113189}{8.535827}\selectfont}},
+  s10/.style={fill=cl2,fill opacity=1},
+  s11/.style={draw=cl2,draw opacity=1,line width=0.616476pt,line cap=butt,line join=miter},
+  s12/.style={anchor=base west,inner sep=0pt,outer sep=0pt,text=cl2,text opacity=1,font={\rmfamily\bfseries\fontsize{7.113189}{8.535827}\selectfont}},
+  s13/.style={fill=cl3,fill opacity=1},
+  s14/.style={draw=cl3,draw opacity=1,line width=0.616476pt,line cap=butt,line join=miter},
+  s15/.style={anchor=base west,inner sep=0pt,outer sep=0pt,text=cl3,text opacity=1,font={\rmfamily\bfseries\fontsize{7.113189}{8.535827}\selectfont}}
+]
+% Coordinates use the displayed projection; original coordinates are retained in comments.
+\path[use as bounding box] (0,0) rectangle ({figwidth},{figheight});
+\begin{scope}
+\clip (0,0) rectangle ({figwidth},{figheight});
+% A; world = [0,0,0]
+\coordinate (P1) at (5.171717,6.787879);
+% B; world = [4,0,0]
+\coordinate (P2) at (10.828283,6.787879);
+% C; world = [0,3,0]
+\coordinate (P3) at (5.171717,2.545455);
+% I; world = [1,1,0]
+\coordinate (P4) at (6.585859,5.373737);
+% Drawing in display order: axes/grid, shapes, labels, formula.
+\draw[s1] (P1)--(P2)--(P3)--(P1) (5.405051,6.787879)--(5.405051,6.554545)--(5.171717,6.554545);
+\draw[s2] (2.626263,9.333333)--(11.959596,0) (5.605051,6.787879)--(5.604818,6.773701)--(5.604123,6.759537)--(5.602964,6.745405)--(5.601343,6.731317)--(5.599263,6.717291)--(5.596724,6.70334)--(5.593731,6.689479)--(5.590285,6.675724)--(5.586391,6.662089)--(5.582054,6.648588)--(5.577276,6.635237)--(5.572065,6.622049)--(5.566425,6.609039)--(5.560362,6.59622)--(5.553883,6.583607)--(5.546995,6.571212)--(5.539705,6.559049)--(5.532021,6.547132)--(5.523951,6.535472)--(5.515504,6.524082)--(5.506688,6.512975)--(5.497514,6.502162)--(5.487992,6.491655)--(5.47813,6.481466)--(5.467941,6.471604)--(5.457434,6.462082)--(5.446621,6.452908)--(5.435514,6.444092)--(5.424124,6.435645)--(5.412464,6.427575)--(5.400547,6.419891)--(5.388384,6.412601)--(5.375989,6.405713)--(5.363376,6.399234)--(5.350557,6.393171)--(5.337547,6.387531)--(5.324359,6.38232)--(5.311008,6.377542)--(5.297507,6.373205)--(5.283872,6.369311)--(5.270117,6.365865)--(5.256256,6.362872)--(5.242305,6.360333)--(5.228279,6.358253)--(5.214191,6.356632)--(5.200059,6.355473)--(5.185895,6.354777)--(5.171717,6.354545);
+\draw[s3] (P4) ellipse [x radius=1.414141cm,y radius=1.414141cm];
+\draw[s4] (P2)--(P1)--(P3);
+\draw[s5] (5.405051,6.787879)--(5.405051,6.554545)--(5.171717,6.554545);
+\node[s6] at (5.605051,7.187879) {90°};
+\fill[s7] (P1) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\draw[s8] (P1) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\node[s9] at (5.321717,6.637879) {A};
+\fill[s10] (P2) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\draw[s11] (P2) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\node[s12] at (10.978283,6.637879) {B};
+\fill[s13] (P3) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\draw[s14] (P3) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\node[s15] at (5.321717,2.395455) {C};
+\fill[s7] (P4) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\draw[s8] (P4) ellipse [x radius=0.083333cm,y radius=0.083333cm];
+\node[s9] at (6.735859,5.223737) {I};
+\end{scope}
+\end{tikzpicture}%
+}
+\end{center}
+\end{document}

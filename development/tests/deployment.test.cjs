@@ -1,0 +1,5 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const site=path.resolve(__dirname,'../../CurveLab');
+for(const name of fs.readdirSync(site)){assert.ok(!name.endsWith('.test.cjs')&&name!=='README.md');if(!name.endsWith('.html')&&!name.endsWith('.css'))continue;const text=fs.readFileSync(path.join(site,name),'utf8');const urls=[...text.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1]);urls.push(...[...text.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)].map(m=>m[1]));for(const url of urls){if(/^(?:#|https?:|data:|mailto:)/.test(url))continue;const target=path.resolve(site,url.split(/[?#]/)[0]);assert.ok(target.startsWith(site+path.sep),url);assert.ok(fs.existsSync(target),name+': missing '+url);}}
+assert.ok(fs.existsSync(path.join(site,'vendor/tex-svg.js')));assert.ok(fs.existsSync(path.join(site,'vendor/MathJax-LICENSE.txt')));
+console.log('PASS: static deployment assets, local page/style dependencies, bundled runtime/license and no development files.');

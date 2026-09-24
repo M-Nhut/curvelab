@@ -1,0 +1,50 @@
+/* Shared presentation only: the curve/surface/worksheet math is unchanged. */
+:root{--heading-ink:#174b7a;--section-ink:#215e8d;--focus-ink:#1463d6}
+main h1{color:var(--heading-ink)}
+main h2,main summary,.toolbar>div>strong,#steps-panel>strong{color:var(--section-ink)}
+main summary{font-weight:700}main label:not(.check){color:#293f53}
+main input:focus-visible,main select:focus-visible,main button:focus-visible,main textarea:focus-visible{outline-color:var(--focus-ink)}
+.lab-nav a[aria-current=page]{color:var(--heading-ink)}
+@media(min-width:701px){
+ body{height:100vh;height:100dvh;display:grid;grid-template-rows:auto auto minmax(0,1fr);overflow:hidden}
+ body>main{width:100%;height:100%;min-height:0;align-items:stretch;overflow:hidden}
+ body>main>aside,body>main>.workspace{height:100%;min-height:0;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#a6b5c5 transparent}
+ body>main>aside{overflow-x:hidden}
+ body>main>aside:focus-visible,body>main>.workspace:focus-visible{outline:2px solid var(--focus-ink);outline-offset:-3px}
+ .construction-main #board{height:clamp(260px,43vh,580px)}
+}
+/* A single normal page scroll remains available when the columns stack. */
+@media(max-width:700px){body{height:auto;display:block;overflow:visible}body>main>aside,body>main>.workspace{height:auto;overflow:visible}}
+.build-options{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 0}
+.build-options .check{font-size:13px;margin:0}.build-options input{accent-color:#1463d6}
+.step-navigation{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.step-navigation button{font-size:12px;padding:5px 9px}
+.objects-panel{margin-top:12px;border-top:1px solid #999;padding-top:12px}
+.objects-panel h2{font-size:17px;margin:0 0 4px}.objects-panel .hint{margin:4px 0 8px}
+.objects-panel #objects{max-height:230px;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+.objects-panel .object-row{grid-template-columns:20px minmax(0,1fr) auto;padding:7px 0}
+.instruction-row{flex-wrap:wrap}.instruction-row .canvas-instruction{min-width:180px}
+/* Readable typography shared by every workspace. */
+body{font-size:17px;line-height:1.6}
+body main h1{font-size:29px}body main h2{font-size:21px}
+body main summary{font-size:18px;line-height:1.5}
+body main .drawing-options-title{font-size:21px;font-weight:750;padding:5px 0}
+body main label,body main .check{font-size:16px}
+body main button{font-size:15px;min-height:40px}
+body main input:not([type=checkbox],[type=range],[type=file]),body main select,body main textarea{font-size:17px}
+body main .intro{font-size:16px}
+body main .hint,body main .footnote,body main details p{font-size:15px;line-height:1.6}
+body .lab-nav a{font-size:17px}
+body main .result-item .result-label,body main .object-row small{font-size:15px}
+body main .object-name{font-size:16px}
+body main .object-actions button{font-size:14px;min-height:34px!important}
+body main #steps-panel,body main #steps,body main #step-status,body main #tool-help,body main #work-plane label,body main #selection-panel{font-size:15px}
+body main #status,body main #lab-status,body main .canvas-instruction,body main .legend{font-size:15px}
+body main #cursor-coordinate{font-size:14px}
+body main .variation-table,body main .point-card,body main #geometry-summary,body main #geometry-point,body main #solution-guide{font-size:16px}
+.build-history{display:inline-flex;align-items:center;gap:7px;flex:none}
+body main .history-arrow{display:inline-flex;justify-content:center;align-items:center;width:44px;height:44px;min-height:44px;padding:7px;color:#174b7a}
+.history-arrow svg{display:block;width:27px;height:27px;fill:currentColor}
+.history-arrow.forward svg{transform:scaleX(-1)}
+.history-arrow:disabled{opacity:.3;cursor:default}
+body main #finish-build{min-height:44px}
+@media(max-width:700px){body main h1{font-size:26px}body .lab-nav a{font-size:16px}.instruction-row{gap:9px}.instruction-row .auto-build-label{flex-basis:100%}}

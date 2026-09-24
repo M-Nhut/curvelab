@@ -1,0 +1,53 @@
+% !TeX program = xelatex
+% CurveLab - standalone vector export. Compile with XeLaTeX, not pdfLaTeX.
+% Structure: tailieuvehinh.pdf, I.1 (p.4); coordinates, draw, node, scope, clip.
+% 3D is the current parallel projection, with visible/hidden line parts (I.3.5, pp.30-32).
+% Captures the current viewport and sampled paths, without embedding a PNG.
+% Width 16 cm; line widths and label sizes preserve the current drawing proportions.
+% Mode: Primitive test
+\documentclass[varwidth=50cm,border=2pt]{standalone}
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Arial}{\setsansfont{Arial}}{\setsansfont{TeX Gyre Heros}}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz,graphicx}
+\usetikzlibrary{calc,angles,arrows.meta}
+\definecolor{cl0}{RGB}{255,255,255}
+\definecolor{cl1}{RGB}{20,99,214}
+\definecolor{cl2}{RGB}{255,169,65}
+\definecolor{cl3}{RGB}{0,0,0}
+% Change only this width; geometry, strokes and labels scale together.
+\newcommand{\FigureWidth}{16cm}
+\begin{document}
+\begin{center}
+\resizebox{\FigureWidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=-1cm,
+ declare function={figwidth=16; figheight=10;},
+  s1/.style={fill=cl0,fill opacity=1},
+  s2/.style={draw=cl1,draw opacity=1,line width=1.13811pt,line cap=butt,line join=miter},
+  s3/.style={fill=cl2,fill opacity=0.45},
+  s4/.style={draw=cl1,draw opacity=1,line width=1.13811pt,line cap=butt,line join=miter,dash pattern=on 2.845276pt off 2.27622pt},
+  s5/.style={anchor=base west,inner sep=0pt,outer sep=0pt,text=cl3,text opacity=1,font={\rmfamily\bfseries\fontsize{10.242992}{12.291591}\selectfont}},
+  s6/.style={anchor=north east,inner sep=3pt,fill=white,fill opacity=.94,text opacity=1,font={\fontsize{8.535827}{10.242992}\selectfont}}
+]
+% Coordinates use the displayed projection; original coordinates are retained in comments.
+\path[use as bounding box] (0,0) rectangle ({figwidth},{figheight});
+\begin{scope}
+\clip (0,0) rectangle ({figwidth},{figheight});
+
+% Drawing in display order: axes/grid, shapes, labels, formula.
+\fill[s1] (0,0)--(16,0)--(16,10)--(0,10)--cycle;
+\draw[s2] (0,4)--(16,4);
+\begin{scope}
+\clip (2,2) rectangle (12,7);
+\fill[s3] (5.4,2)--(12,2.694737)--(12,3.84)--(8.961538,7)--(7,7)--(2,2)--(2,2)--cycle;
+\end{scope}
+\draw[s4] (7,5.2) ellipse [x radius=1.8cm,y radius=1.8cm];
+\node[s5] at (4,1.2) {Điểm A₁: 90° \& 50\% \_ \{x\}};
+% Formula shown in the selected corner.
+\node[s6] at (15.72,0.28) {$\begin{gathered}x(t)=\cos t\\y(t)=\sin t\end{gathered}$};
+\end{scope}
+\end{tikzpicture}%
+}
+\end{center}
+\end{document}
